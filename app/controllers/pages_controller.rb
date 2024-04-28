@@ -12,12 +12,14 @@ class PagesController < ApplicationController
     end 
     
     
-    
-    
     render(:template => "all_directors")
   end
 
   def one_director
+    @direc_id_to_display= params.fetch("director_id").to_i
+    @direc_selected= Director.all.at(@direc_id_to_display)
+
+
     render(:template => "one_director")
   end
 
