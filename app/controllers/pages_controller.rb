@@ -1,9 +1,33 @@
 class PagesController < ApplicationController
   def all_directors
+
+    #app 
+    get_direc_info= Director.all
+    number=-1
+    @direc_array=Array.new
+    get_direc_info.each do |display|
+      number= number + 1
+      direc= Director.all.at(number)
+      @direc_array.push(direc)
+    end 
+    
+    
+    
+    
     render(:template => "all_directors")
   end
 
   def one_director
+    render(:template => "one_director")
+  end
+
+
+  def eldest_director
+    render(:template => "one_director")
+  end
+
+
+  def youngest_director
     render(:template => "one_director")
   end
 

@@ -5,11 +5,16 @@ Rails.application.routes.draw do
   
   get("/directors/:director", {:controller=> "pages", :action => "one_director"})
 
+  get("/directors/youngest", {:controller=> "pages", :action => "youngest_director"})
+
+  get("/directors/eldest", {:controller=> "pages", :action => "eldest_director"})
+
   get("/actors", {:controller=> "pages", :action => "all_actors"})
 
   get("/actors/:actor", {:controller=> "pages", :action => "one_actor"})
 
   get("/movies", {:controller=> "pages", :action => "all_movies"})
 
-  get("/directors/:director", {:controller=> "pages", :action => "one_director"})
+  get("/movies/:movie", {:controller=> "pages", :action => "one_movie"})
+
 end
