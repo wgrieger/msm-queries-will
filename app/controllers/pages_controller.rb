@@ -51,6 +51,15 @@ class PagesController < ApplicationController
   end
 
   def all_movies
+    get_movie_info= Movie.all
+    number=-1
+    @movie_array=Array.new
+    get_movie_info.each do |display|
+      number= number + 1
+      mov= Movie.all.at(number)
+      @movie_array.push(mov)
+    end 
+
     render(:template => "all_movies")
   end
 

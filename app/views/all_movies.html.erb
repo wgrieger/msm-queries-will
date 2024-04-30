@@ -1,1 +1,30 @@
-<h1> future all movies </h1>
+<h1> List of all movies</h1> 
+
+<table border="1">
+
+<tbody>
+<tr>
+  <th>ID</th>
+  <th>Image</th>
+  <th>Title</th>
+  <th>Year</th>
+  <th>Director</th>
+  <th></th>
+<%@movie_array.each do |display|%>
+    <tr>
+      <td><%=display.id%></td>
+      <td><img src="<%=display.image%>" style="width:250px"></td>
+      <td><%=display.title%></td>
+      <td><%=display.year%></td>
+      <%@direc_lookup=display.director_id%>
+      <%director_for_movie=Director.all.where(:id => @direc_lookup)%>
+      <%director_for_movie_open=director_for_movie.at(0)%>
+      <td><%=director_for_movie_open.name%></td>
+      <td><a href="/movies/<%=display.id%>">Show details</a></td>
+    </tr>
+  <%end%>
+
+
+
+</tbody>
+</table>
