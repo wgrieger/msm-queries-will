@@ -1,3 +1,38 @@
-<h1> Future single director</h1>
+<h1> Director #<%=@display_id%> details</h1>
 
-<p><%=@direc_selected%> </p>
+<a href="/directors">
+  Go back
+</a>
+
+<dl>
+<%@display_relation.each do |display|%>
+      <dt> Name </dt>
+      <dt><%=display.name%></dt>
+      
+       <dt> DOB </dt>
+      <dt><%=display.dob%></dt>
+
+
+      <dt> Image </dt>
+      <dt><img src="<%=display.image%>" style="width:250px"></dt>
+
+      <dt> Bio</dt>
+      <dt><%=display.bio%></dt>
+      
+      <dt> Created at:</dt>
+      <dt><%=display.created_at%></dt>
+
+      <dt> Updated at:</dt>
+      <dt><%=display.updated_at%></dt>
+
+
+    </dl>
+
+
+  <%end%>
+
+
+<!--<%=@direc_array%>-->
+
+</tbody>
+</table>

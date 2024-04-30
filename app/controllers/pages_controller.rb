@@ -16,8 +16,16 @@ class PagesController < ApplicationController
   end
 
   def one_director
-    @direc_id_to_display= params.fetch("director_id").to_i
-    @direc_selected= Director.all.at(@direc_id_to_display)
+    
+    @direc_id_to_display=params.fetch("director_id").to_i
+  
+    direc_selected= Director.all.where(:id => @direc_id_to_display)
+  
+    @display_relation=direc_selected
+    open_relation= direc_selected.at(0)
+    @display_id= open_relation.id
+    
+   
 
 
     render(:template => "one_director")
