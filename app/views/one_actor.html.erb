@@ -51,7 +51,7 @@
       <%@director_lookup=Director.all.where(:id => @movie.at(0).director_id)%>
       <td><%=@director_lookup.at(0).name%></td>
       
-      <td><a href="/movies/<%#=display.id%>">Show details</a></td>
+      <td><a href="/movies/<%=@movie.at(0).id%>">Show details</a></td>
   <%end%>
     </tr>
 
