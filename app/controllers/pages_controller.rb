@@ -1,3 +1,5 @@
+#needed to learn to use .pluck...
+
 class PagesController < ApplicationController
   def all_directors
 
@@ -11,7 +13,7 @@ class PagesController < ApplicationController
       @direc_array.push(direc)
     end 
     
-    
+  
     render(:template => "all_directors")
   end
 
