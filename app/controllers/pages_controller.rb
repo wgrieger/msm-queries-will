@@ -24,9 +24,10 @@ class PagesController < ApplicationController
     @display_relation=direc_selected
     open_relation= direc_selected.at(0)
     @display_id= open_relation.id
+    @direc_name=open_relation.name
     
-   
-
+   @finding_movies=Movie.all.where(:director_id => @display_id)
+  
 
     render(:template => "one_director")
   end

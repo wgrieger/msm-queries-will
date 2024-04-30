@@ -28,11 +28,29 @@
 
     </dl>
 
+ <table border="1">
 
+<tbody>
+<tr>
+  <th>ID</th>
+  <th>Image</th>
+  <th>Title</th>
+  <th>Year</th>
+  <th>Director</th>
+  <th></th>
+<%@finding_movies.each do |display|%>
+    <tr>
+      <td><%=display.id%></td>
+      <td><img src="<%=display.image%>" style="width:250px"></td>
+      <td><%=display.title%></td>
+      <td><%=display.year%></td>
+      <td><%=@direc_name%></td>
+      <td><a href="/movies/<%=display.id%>">Show details</a></td>
+    </tr>
   <%end%>
 
 
-<!--<%=@direc_array%>-->
-
 </tbody>
 </table>
+
+  <%end%>
