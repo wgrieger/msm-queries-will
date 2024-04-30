@@ -77,6 +77,15 @@ class PagesController < ApplicationController
     @actor_name=@open_relation_actor.name
     
    @finding_characters_actor_1=Character.all.where(:actor_id => @actor_id_to_display)
+   @char_array=Array.new
+   char_number=-1
+   @finding_characters_actor_1.each do |find_char|
+    char_number=char_number+1
+    @char_array.push(@finding_characters_actor_1.at(char_number).name)
+
+   end 
+
+
    @movie_array=Array.new
    @finding_characters_actor_1.each do |find_movie|
       @movie_array.push(find_movie.movie_id)

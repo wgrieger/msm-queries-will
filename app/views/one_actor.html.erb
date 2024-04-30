@@ -32,11 +32,10 @@
 
 <tbody>
 <tr>
-  <th>ID</th>
-  <th>Image</th>
   <th>Title</th>
   <th>Year</th>
   <th>Director</th>
+  <th>Character Name</th>
   <th></th>
 
   <%movie_list_number=-1%>
@@ -44,12 +43,12 @@
       <%movie_list_number=movie_list_number+1%>
       <%@movie=@movie_list.at(movie_list_number)%>
     <tr>
-      <td><%=@movie.at(0).id%></td>
-      <td><img src="<%=@movie.at(0).image%>"></td>
+  
       <td><%=@movie.at(0).title%></td>
       <td><%=@movie.at(0).year%></td>
       <%@director_lookup=Director.all.where(:id => @movie.at(0).director_id)%>
       <td><%=@director_lookup.at(0).name%></td>
+      <td><%=@char_array[movie_list_number]%></td>
       
       <td><a href="/movies/<%=@movie.at(0).id%>">Show details</a></td>
   <%end%>
