@@ -49,14 +49,6 @@ class PagesController < ApplicationController
   end
 
 
-  #def eldest_director
-
-  #  start_eldest=Director.order(:dob) 
-  #  oldest_director_open=start_eldest.at(0)
-  #  @oldest_director_name=oldest_director_open.name
-
-  #  render(:template => "one_director")
-  #end
 
 
   def youngest_director
@@ -64,10 +56,46 @@ class PagesController < ApplicationController
   end
 
   def all_actors
+    get_actor_info= Actor.all
+    number=-1
+    @actor_array=Array.new
+    get_actor_info.each do |display|
+      number= number + 1
+      actor= Actor.all.at(number)
+      @actor_array.push(actor)
+    end
     render(:template => "all_actors")
   end
 
   def one_actor
+    @actor_id_to_display=params.fetch("actor_id")
+    actor_selected= Actor.all.where(:id => @actor_id_to_display)
+  
+    @actor_relation=actor_selected
+    @open_relation_actor= actor_selected.at(0)
+    @display_id_actor= @open_relation_actor.id
+    @actor_name=@open_relation_actor.name
+    
+   @finding_characters_actor_1=Character.all.where(:actor_id => @actor_id_to_display)
+   @movie_array=Array.new
+   @finding_characters_actor_1.each do |find_movie|
+      @movie_array.push(find_movie.movie_id)
+     end 
+  
+     @movie_list=Array.new
+     number_array=-1
+     @movie_array.each do |pull_movie|
+        number_array=number_array+1
+       @movie_list.push(Movie.all.where(:id => @movie_array[number_array]))
+     end
+
+     movie_list_number=-1
+     @movie_list.each do
+      movie_list_number=movie_list_number+1
+      @movie_list.at(movie_list_number)
+     end
+    
+
     render(:template => "one_actor")
   end
 

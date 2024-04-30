@@ -1,0 +1,61 @@
+<h1> Actor #<%=@display_id_actor%> details</h1>
+
+<a href="/actors">
+  Go back
+</a>
+
+<dl>
+<%@actor_relation.each do |display|%>
+      <dt> Name </dt>
+      <dt><%=display.name%></dt>
+      
+       <dt> DOB </dt>
+      <dt><%=display.dob%></dt>
+
+
+      <dt> Image </dt>
+      <dt><img src="<%=display.image%>" style="width:250px"></dt>
+
+      <dt> Bio</dt>
+      <dt><%=display.bio%></dt>
+      
+      <dt> Created at:</dt>
+      <dt><%=display.created_at%></dt>
+
+      <dt> Updated at:</dt>
+      <dt><%=display.updated_at%></dt>
+<%end%>
+
+    </dl>
+
+ <table border="1">
+
+<tbody>
+<tr>
+  <th>ID</th>
+  <th>Image</th>
+  <th>Title</th>
+  <th>Year</th>
+  <th>Director</th>
+  <th></th>
+
+  <%movie_list_number=-1%>
+   <%  @movie_list.each do %>
+      <%movie_list_number=movie_list_number+1%>
+      <%@movie=@movie_list.at(movie_list_number)%>
+    <tr>
+      <td><%=@movie.at(0).id%></td>
+      <td><img src="<%=@movie.at(0).image%>"></td>
+      <td><%=@movie.at(0).title%></td>
+      <td><%=@movie.at(0).year%></td>
+      <%@director_lookup=Director.all.where(:id => @movie.at(0).director_id)%>
+      <td><%=@director_lookup.at(0).name%></td>
+      
+      <td><a href="/movies/<%#=display.id%>">Show details</a></td>
+  <%end%>
+    </tr>
+
+</tbody>
+</table>
+
+  
