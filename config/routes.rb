@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   get("/directors/youngest", {:controller=> "pages", :action => "youngest_director"})
 
-  get("/directors/eldest", {:controller=> "pages", :action => "eldest_director"})
+  get("/directors/<%:director_id=eldest%>", {:controller=> "pages", :action => "eldest_director"})
 
   get("/actors", {:controller=> "pages", :action => "all_actors"})
 
