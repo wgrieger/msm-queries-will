@@ -64,6 +64,18 @@ class PagesController < ApplicationController
   end
 
   def one_movie
+
+       
+    @movie_id_to_display=params.fetch("movie_id").to_i
+  
+    movie_selected= Movie.all.where(:id => @movie_id_to_display)
+  
+    @display_relation_movie=movie_selected
+    open_relation_movie= movie_selected.at(0)
+    @display_id_movie= open_relation_movie.id
+    @direc_name_movie=open_relation_movie.title
+    
+  
     render(:template => "one_movie")
   end
 

@@ -1,0 +1,41 @@
+<h1> Movie #<%=@display_id_movie%> details</h1>
+
+<a href="/movies">
+  Go back
+</a>
+
+<dl>
+<%@display_relation_movie.each do |display|%>
+      <dt> Title </dt>
+      <dt><%=display.title%></dt>
+      
+       <dt> Year </dt>
+      <dt><%=display.year%></dt>
+
+      <dt> Duration</dt>
+      <dt><%=display.duration%></dt>
+
+      <dt> Description</dt>
+      <dt><%=display.description%></dt>
+
+      <dt> Image </dt>
+      <dt><img src="<%=display.image%>" style="width:250px"></dt>
+
+      <dt> Director</dt>
+      <%@direc_lookup=display.director_id%>
+      <%director_for_movie=Director.all.where(:id => @direc_lookup)%>
+      <%director_for_movie_open=director_for_movie.at(0)%>
+      <td><%=director_for_movie_open.name%></td>
+
+      <dt> Created at:</dt>
+      <dt><%=display.created_at%></dt>
+
+      <dt> Updated at:</dt>
+      <dt><%=display.updated_at%></dt>
+
+
+    </dl>
+
+ 
+
+  <%end%>

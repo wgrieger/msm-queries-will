@@ -11,10 +11,10 @@ Rails.application.routes.draw do
 
   get("/actors", {:controller=> "pages", :action => "all_actors"})
 
-  get("/actors/:actor", {:controller=> "pages", :action => "one_actor"})
+  get("/actors/:actor_id", {:controller=> "pages", :action => "one_actor"})
 
   get("/movies", {:controller=> "pages", :action => "all_movies"})
 
-  get("/movies/:movie", {:controller=> "pages", :action => "one_movie"})
+  get("/movies/:movie_id", {:controller=> "pages", :action => "one_movie"})
 
 end
